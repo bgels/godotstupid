@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnxx2t5q7txf4"]
+
+[ext_resource type="Texture2D" uid="uid://gwq3k15w4tbl" path="res://Assets/Clouds/Clouds 4/1.png" id="1_oq3rf"]
+[ext_resource type="Texture2D" uid="uid://pof8oxcg6aj" path="res://Assets/Clouds/Clouds 7/4.png" id="2_ph5lc"]
+[ext_resource type="PackedScene" uid="uid://cilpwxe7hq33w" path="res://Player/Player.tscn" id="3_7abwp"]
+[ext_resource type="PackedScene" uid="uid://c6r0o5m32kuyf" path="res://Enemy/monster_enemy.tscn" id="4_dco83"]
+
+[node name="World" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-20, 307)
+texture = ExtResource("1_oq3rf")
+region_enabled = true
+region_rect = Rect2(-4000, -4000, 4000, 4000)
+
+[node name="Background_clouds" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-9, -2)
+texture = ExtResource("2_ph5lc")
+region_enabled = true
+region_rect = Rect2(-4000, 4000, 4000, 4000)
+
+[node name="Player" parent="." instance=ExtResource("3_7abwp")]
+position = Vector2(983, 482)
+
+[node name="monster_enemy" parent="." instance=ExtResource("4_dco83")]
+position = Vector2(497, 273)

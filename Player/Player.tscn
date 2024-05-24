@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cilpwxe7hq33w"]
+
+[ext_resource type="Texture2D" uid="uid://8o7gtdov5o6l" path="res://Assets/Player/idle_down (1).png" id="1_04awd"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_egjtu"]
+[ext_resource type="Script" path="res://Player/sprite.gd" id="3_pxjnl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isiqa"]
+size = Vector2(32.25, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stacl"]
+size = Vector2(13, 30)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
+script = ExtResource("1_egjtu")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.864, 0.9)
+texture = ExtResource("1_04awd")
+script = ExtResource("3_pxjnl")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_isiqa")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="wepHitbox" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(35, 1)
+shape = SubResource("RectangleShape2D_stacl")
