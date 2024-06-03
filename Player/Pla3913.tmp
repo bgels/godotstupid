@@ -69,7 +69,7 @@ radius = 15.0
 height = 60.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m4m57"]
-radius = 23.3333
+radius = 25.0
 height = 100.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
@@ -103,8 +103,11 @@ visible = false
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_d10f6")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
 
-[node name="Hitbox" type="CollisionShape2D" parent="Hitbox"]
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(0, -1)
 scale = Vector2(0.6, 0.6)
 shape = SubResource("CapsuleShape2D_m4m57")

@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6r0o5m32kuyf"]
+[gd_scene load_steps=5 format=3 uid="uid://c6r0o5m32kuyf"]
 
 [ext_resource type="Script" path="res://Enemy/demon.gd" id="1_ao5ko"]
 [ext_resource type="Texture2D" uid="uid://dw1mlvkpey7qx" path="res://Assets/Monster/idle_down (1).png" id="2_o4lrx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0gdl"]
 size = Vector2(63.5, 54)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6w45h"]
+radius = 35.0
 
 [node name="monster_enemy" type="CharacterBody2D" groups=["monster"]]
 script = ExtResource("1_ao5ko")
@@ -14,5 +17,11 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_o4lrx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.75, 2)
 shape = SubResource("RectangleShape2D_r0gdl")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["playerDamaging"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_6w45h")

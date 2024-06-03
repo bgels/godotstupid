@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bnxx2t5q7txf4"]
+[gd_scene load_steps=24 format=3 uid="uid://bnxx2t5q7txf4"]
 
 [ext_resource type="PackedScene" uid="uid://bwrxo01t3bg72" path="res://Enemy/spawner.tscn" id="1_nukqj"]
 [ext_resource type="Script" path="res://World/world.gd" id="1_qoa6y"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d3hhfe7xvsd02" path="res://Assets/tiles/Outside_1_2.png" id="6_13bos"]
 [ext_resource type="Texture2D" uid="uid://c4aql7r1mjwse" path="res://Assets/tiles/Outside_3_3.png" id="7_7pfp7"]
 [ext_resource type="Texture2D" uid="uid://b383baabh8lok" path="res://Assets/tiles/Outside_3_4.png" id="8_51q2d"]
+[ext_resource type="Script" path="res://World/healthBar.gd" id="10_k2yxd"]
 [ext_resource type="Shader" uid="uid://bsh3ewlke7bq8" path="res://World/world.tres" id="11_86ffo"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_c6ew3"]
@@ -59,16 +60,22 @@ noise = SubResource("FastNoiseLite_1iyie")
 shader = ExtResource("11_86ffo")
 shader_parameter/tex_frg_2 = SubResource("NoiseTexture2D_ar3tv")
 
+[sub_resource type="Theme" id="Theme_66tgf"]
+default_font_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hhym"]
+bg_color = Color(0, 0, 0, 0)
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_qoa6y")
 
 [node name="Player" parent="." instance=ExtResource("3_7abwp")]
 position = Vector2(468, 349)
 
-[node name="monsterSpawn" parent="." instance=ExtResource("1_nukqj")]
+[node name="monsterSpawn" parent="." groups=["monster"] instance=ExtResource("1_nukqj")]
 
 [node name="monster_enemy" parent="monsterSpawn" instance=ExtResource("4_dco83")]
-position = Vector2(633, 256)
+position = Vector2(-128, -56)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -91,3 +98,14 @@ use_parent_material = true
 custom_minimum_size = Vector2(2048, 1200)
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_right = 392.0
+offset_bottom = 40.0
+theme = SubResource("Theme_66tgf")
+theme_override_colors/font_color = Color(0, 0.83784, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_0hhym")
+value = 100.0
+script = ExtResource("10_k2yxd")
