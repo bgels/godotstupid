@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwrxo01t3bg72"]
+
+[ext_resource type="Script" path="res://archived/spawner.gd" id="1_dwx8m"]
+[ext_resource type="PackedScene" uid="uid://c6r0o5m32kuyf" path="res://Enemy/demon.tscn" id="2_cco0j"]
+
+[node name="monsterSpawn" type="Node2D"]
+script = ExtResource("1_dwx8m")
+demon = ExtResource("2_cco0j")
+
+[node name="CheckMonsterTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 1.2
+autostart = true

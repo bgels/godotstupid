@@ -10,6 +10,7 @@ size = Vector2(63.5, 54)
 radius = 35.0
 
 [node name="monster_enemy" type="CharacterBody2D" groups=["monster"]]
+platform_floor_layers = 4294967040
 script = ExtResource("1_ao5ko")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
