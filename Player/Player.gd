@@ -1,14 +1,52 @@
 extends CharacterBody2D
+class_name Player
 
+@onready var iframe: Timer = $iframe
+@onready var damageArea = $Hitbox
+signal healthChanged
+signal playerDeath
 #Stats
-@export var health = 100
+@export var maxHealth = 100
+@onready var health: int = maxHealth
 @export var speed = 400
+var invincible: bool = false
 # Weapon
 @export var BulletScene : PackedScene
 var bulletOffset = 50
 
+func _ready():
+	add_to_group("player")
+	print("Ok")
+	iframe.connect("timeout", Callable(self, "_on_iframe_timeout"))
+	damageArea.connect("area_entered", Callable(self, "_on_area_entered"))
+
+func startIframe():
+	invincible = true
+	iframe.start()
+
+func _on_iframe_timeout():
+	invincible = false
+
+func take_damage(x):
+	if not invincible:
+		health -= x
+		healthChanged.emit()
+		print(health)
+		if health <= 0:
+			playerDeath.emit()
+		else:
+			startIframe()
+
+func _on_area_entered(body):
+	print(body)
+	if body.is_in_group("playerDamaging") and invincible == false: # ensure that the area2d node in the monster has a group called playerDamaging
+		take_damage(15)
+		startIframe()
+		print("dmg")
+		print("Iframe start")
 
 func get_input():
+	
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction.normalized() * speed
 	if velocity == Vector2.ZERO:
@@ -30,8 +68,7 @@ func shoot(position_tar):
 	bullet.direction = (position_tar - position).normalized()
 	bullet.rotate_bullet()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	get_input()
 	move_and_slide()
-	
-# creates bullet, makes bullet travel in direction of cursor, removes bullet after traveling some distance, if bullet touches monster enemy
+

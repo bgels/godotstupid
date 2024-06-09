@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #stats
 @export var speed = 45 # slider to the right
-@export var health = 100
+@export var health = 50
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var spawner = get_parent()
