@@ -39,10 +39,18 @@ func take_damage(x):
 
 func _on_area_entered(body):
 	print(body)
+<<<<<<< Updated upstream
 	if body.is_in_group("playerDamaging"): # ensure that the area2d node in the monster has a group called playerDamaging
 		take_damage(15)
 		print("dmg")
 
+=======
+	if body.is_in_group("playerDamaging") and invincible == false: # ensure that the area2d node in the monster has a group called playerDamaging
+		take_damage(15)
+		startIframe()
+		print("dmg")
+		print("Iframe start")
+>>>>>>> Stashed changes
 
 func get_input():
 	
@@ -66,6 +74,10 @@ func shoot(position_tar):
 	bullet.position = startingPosition
 	bullet.direction = (position_tar - position).normalized()
 	bullet.rotate_bullet()
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()

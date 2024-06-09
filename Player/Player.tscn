@@ -69,8 +69,13 @@ radius = 15.0
 height = 60.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m4m57"]
+<<<<<<< Updated upstream
 radius = 23.3333
 height = 100.0
+=======
+radius = 13.3333
+height = 50.0
+>>>>>>> Stashed changes
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
@@ -96,7 +101,11 @@ parameters/blend_position = Vector2(0.0483928, 2.64762)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="iframe" type="Timer" parent="."]
+<<<<<<< Updated upstream
 wait_time = 0.5
+=======
+wait_time = 1.2
+>>>>>>> Stashed changes
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

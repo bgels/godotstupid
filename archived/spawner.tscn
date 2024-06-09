@@ -1,7 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwrxo01t3bg72"]
 
 [ext_resource type="Script" path="res://archived/spawner.gd" id="1_dwx8m"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://c6r0o5m32kuyf" path="res://Enemy/demon.tscn" id="2_cco0j"]
+=======
+[ext_resource type="PackedScene" uid="uid://c6r0o5m32kuyf" path="res://Enemy/normalMobs/demon.tscn" id="2_cco0j"]
+>>>>>>> Stashed changes
 
 [node name="monsterSpawn" type="Node2D"]
 script = ExtResource("1_dwx8m")
