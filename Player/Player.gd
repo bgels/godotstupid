@@ -6,7 +6,7 @@ class_name Player
 signal healthChanged
 signal playerDeath
 #Stats
-@export var maxHealth = 100
+@export var maxHealth = 200
 @onready var health: int = maxHealth
 @export var speed = 400
 var invincible: bool = false

@@ -2,7 +2,6 @@
 extends Node2D
 
 @onready var my_timer = $Timer
-
 func _ready():
 	for i in range(10):
 		spawn_mob()

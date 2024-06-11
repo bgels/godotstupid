@@ -9,8 +9,9 @@ func _ready():
 
 func updateHealth():
 	
-	value = player.health * 100.0 / player.maxHealth
+	value = player.health / 2
 	
 func deathSequence():
 	get_tree().paused = true
 	print("GAME OVER")
+
